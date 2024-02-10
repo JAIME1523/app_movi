@@ -99,7 +99,7 @@ class _MiveDetails extends StatelessWidget {
               maxLines: 10,
               onChanged: (value) {
                 if (value.isNotEmpty) {
-                  Provider.of<LocalStorageProvider>(context)
+                  Provider.of<LocalStorageProvider>(context, listen: false)
                       .addComent(provider.infoMovi!, value);
                   
                 }

@@ -12,6 +12,5 @@ class LocalStorageProvider extends ChangeNotifier {
   addComent(MovieDetailModel value, String dato) async {
     value.myReview = dato;
     await IsraDatasource().createDetail(value);
-    notifyListeners();
   }
 }

@@ -1,4 +1,3 @@
-
 import 'package:app_movie/infrastructure/datasources/isra_datasource.dart';
 import 'package:app_movie/infrastructure/models/models.dart';
 import 'package:app_movie/infrastructure/models/schemas/movi_shema_model.dart';
@@ -17,10 +16,10 @@ class MovieProvider extends ChangeNotifier {
 
   Future getMovies() async {
     CheckConection.conection(() async {
-       if (pageMove == null) {
-      pageMove = MoviShemaModel(page: 1);
-      pageMove!.page = await IsraDatasource().getPage();
-    }
+      if (pageMove == null) {
+        pageMove = MoviShemaModel(page: 1);
+        pageMove!.page = await IsraDatasource().getPage();
+      }
       final listMovie = await MovieService.getMovies(1);
       movies = listMovie.results;
       pageMove!.page = listMovie.page;
@@ -28,7 +27,7 @@ class MovieProvider extends ChangeNotifier {
       await IsraDatasource().saveMovie(
           movies,
           MoviShemaModel(
-            page: pageMove!.page,
+            page: listMovie.page,
           ));
       isLoading = false;
     }, () async {
@@ -37,8 +36,6 @@ class MovieProvider extends ChangeNotifier {
     });
   }
 
-  
-
   Future nextPage() async {
     if (pageMove == null) {
       pageMove = MoviShemaModel(page: 1);
@@ -46,9 +43,11 @@ class MovieProvider extends ChangeNotifier {
     }
     if (_pageLoading) return;
     _pageLoading = true;
+
     try {
       final listMovie = await MovieService.getMovies(pageMove!.page! + 1);
       movies.addAll(listMovie.results);
+      pageMove!.page = listMovie.page;
       await IsraDatasource()
           .saveMovie(listMovie.results, MoviShemaModel(page: listMovie.page));
       _pageLoading = false;

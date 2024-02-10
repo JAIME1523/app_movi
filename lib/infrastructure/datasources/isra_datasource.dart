@@ -26,12 +26,15 @@ class IsraDatasource {
 
   Future saveMovie(List<ResultMovie> movie, MoviShemaModel pages) async {
     final isar = await db;
-    MoviShemaModel page = MoviShemaModel(page: 1);
+    MoviShemaModel page = pages;
 
-    final pages = await isar.writeTxn(() async {
-      await isar.moviShemaModels.where().findFirst();
+    MoviShemaModel? pages2;
+
+    await isar.writeTxn(() async {
+      pages2 = await isar.moviShemaModels.where().findFirst();
     });
-    if (pages != null) {
+    if (pages2 != null) {
+      page = pages2!;
       page.page = pages.page;
     }
     await isar.writeTxn(() async => isar.resultMovies.putAll(movie));
