@@ -17,15 +17,15 @@ La pantalla principal es el listado de peliculas en las cuales puede navegar a u
 ![alt text](https://res.cloudinary.com/dybphzddq/image/upload/v1707521038/git%20new/Screenshot_1707520335_g3zqyy.png)
 
 
-La segunda pantalla es un mapa echo con api de google y con la ayuda de una API externa podemos mover el mapa e insertar un marcador en la ubicacion agregada
+La segunda pantalla es un mapa echo con api de google y con la ayuda de una API externa podemos mover el mapa e insertar un marcador en la ubicación agregada
 &nbsp;
 
 ![alt text](https://res.cloudinary.com/dybphzddq/image/upload/v1707521039/git%20new/Screenshot_1707520340_b7lmbg.png)
 ![alt text](https://res.cloudinary.com/dybphzddq/image/upload/v1707521039/git%20new/Screenshot_1707520355_gug0n7.png)
 ![alt text](https://res.cloudinary.com/dybphzddq/image/upload/v1707521039/git%20new/Screenshot_1707520363_dqhce6.png)
 
-En esta pantalla unicamente se muestra el nombre de usuario y la opcion de cambiar su nombre y las peliculas en las cuales dejo un comentario
-(nota bug: no carga las imagenes )
+En esta pantalla unicamente se muestra el nombre de usuario y la opcion de cambiar su nombre y las películas en las cuales dejo un comentario
+(nota bug: no carga las imágenes )
 &nbsp;
 
 ![alt text](https://res.cloudinary.com/dybphzddq/image/upload/v1707521040/git%20new/Screenshot_1707520370_vppxnz.png)

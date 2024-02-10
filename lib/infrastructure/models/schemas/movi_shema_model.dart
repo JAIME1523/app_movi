@@ -5,11 +5,11 @@ part 'movi_shema_model.g.dart';
 @collection
 class MoviShemaModel {
   Id idIra = Isar.autoIncrement;
-  late  int page;
+    int? page;
 
 
   MoviShemaModel({
-    required this.page,
+     this.page,
 
   });
 

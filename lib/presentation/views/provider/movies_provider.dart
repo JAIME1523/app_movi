@@ -47,7 +47,7 @@ class MovieProvider extends ChangeNotifier {
     if (_pageLoading) return;
     _pageLoading = true;
     try {
-      final listMovie = await MovieService.getMovies(pageMove!.page + 1);
+      final listMovie = await MovieService.getMovies(pageMove!.page! + 1);
       movies.addAll(listMovie.results);
       await IsraDatasource()
           .saveMovie(listMovie.results, MoviShemaModel(page: listMovie.page));

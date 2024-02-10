@@ -26,13 +26,16 @@ class IsraDatasource {
 
   Future saveMovie(List<ResultMovie> movie, MoviShemaModel pages) async {
     final isar = await db;
-    MoviShemaModel? page;
-    await isar.writeTxn(() async {
-      page = await isar.moviShemaModels.where().findFirst();
+    MoviShemaModel page = MoviShemaModel(page: 1);
+
+    final pages = await isar.writeTxn(() async {
+      await isar.moviShemaModels.where().findFirst();
     });
-    page!.page = pages.page;
+    if (pages != null) {
+      page.page = pages.page;
+    }
     await isar.writeTxn(() async => isar.resultMovies.putAll(movie));
-    await isar.writeTxn(() async => isar.moviShemaModels.put(page!));
+    await isar.writeTxn(() async => isar.moviShemaModels.put(page));
   }
 
   Future deleteData() async {
@@ -58,7 +61,7 @@ class IsraDatasource {
     await isar.writeTxn(() async {
       allRecipes = await isar.moviShemaModels.where().findAll();
     });
-    return allRecipes.isEmpty ? 1 : allRecipes[0].page;
+    return allRecipes.isEmpty ? 1 : allRecipes[0].page ?? 1;
   }
 
   Future<UserModel?> createUser() async {
